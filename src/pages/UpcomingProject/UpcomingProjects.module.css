@@ -1,0 +1,269 @@
+.section {
+  background: linear-gradient(180deg, #1e2023, #013722d1 60%, #1e2123);
+  padding: clamp(40px, 8vw, 120px) clamp(4%, 8%, 8%);
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  color: #fefef6;
+  opacity: 0;
+  transform: translateY(80px);
+  transition: all 1.3s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Heading */
+.heading {
+  font-size: clamp(1.5rem, 5vw, 2.8rem); /* Responsive font size */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: clamp(0.5px, 1px, 1px);
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(90deg, #d4af37, #c5a25f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: clamp(40px, 6vw, 70px);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1.2s ease;
+}
+
+.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.heading::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #d4af37, #c5a25f);
+  border-radius: 6px;
+  transform: translateX(-50%);
+  transition: width 1.2s ease 0.4s;
+}
+
+.animate::after {
+  width: 80%;
+}
+
+/* Grid */
+/* .grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(20px, 4vw, 35px);
+  margin-top: clamp(20px, 4vw, 40px);
+} */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+ gap: clamp(20px, 4vw, 35px);
+  margin-top: 2.5rem;
+}
+
+
+/* Card */
+.card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 14px;
+  width: clamp(200px, 40vw, 220px); /* Responsive width */
+  height: clamp(100px, 20vw, 120px); /* Responsive height */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: #fefef6;
+  font-weight: 600;
+  font-size: clamp(0.4rem, 3vw, 1rem); /* Responsive font size */
+  letter-spacing: 0.5px;
+  overflow: hidden;
+  transition: all 0.6s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  gap: 2px;
+}
+
+.showCard {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card h3 {
+  z-index: 2;
+  position: relative;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(180deg, rgb(197 162 95 / 57%), rgb(197 162 95 / 25%));
+  top: 0;
+  left: 0;
+  transition: all 0.4s ease;
+  z-index: 1;
+}
+
+.card:hover::before {
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(197, 162, 95, 0.25);
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+/* Decorative line */
+.line {
+  position: absolute;
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, #d4af37, #c5a25f);
+  top: 0;
+  left: 25%;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .line {
+  transform: scaleX(1);
+}
+
+/* Note */
+.note {
+  margin-top: clamp(30px, 6vw, 60px);
+  font-size: clamp(1rem, 2.5vw, 1.1rem); /* Responsive font size */
+  color: #fefef6;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease 0.3s;
+}
+
+.fadeIn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.note strong {
+  color: #d4af37;
+}
+
+.cta {
+  background: transparent;
+  border: 1px solid #d7984e;
+  color: #d7984e;
+  padding: 0.5rem 0.5rem;
+  border-radius: 30px;
+  font-size: 0.55rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta:hover {
+  background: #d7984e;
+  color: #000;
+}
+
+
+/* Mobile-specific adjustments (below 768px) */
+@media (max-width: 768px) {
+  .section {
+    padding: clamp(30px, 6vw, 80px) clamp(2%, 5%, 5%);
+  }
+
+  .grid {
+    flex-direction: column; /* Stack cards vertically on mobile */
+    align-items: center;
+    gap: clamp(15px, 4vw, 25px);
+  }
+
+  .card {
+    width: clamp(250px, 85vw, 300px); /* Wider on mobile for better readability */
+    height: clamp(80px, 25vw, 100px); /* Adjust height for mobile */
+  }
+
+  .heading {
+    margin-bottom: clamp(20px, 5vw, 40px);
+  }
+
+  .note {
+    margin-top: clamp(20px, 4vw, 40px);
+    padding: 0 clamp(10px, 3vw, 20px); /* Add side padding on mobile */
+  }
+}
+
+/* Tablet adjustments (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .grid {
+    gap: clamp(25px, 3vw, 30px);
+  }
+
+  .card {
+    width: clamp(220px, 25vw, 240px);
+    height: clamp(110px, 15vw, 130px);
+  }
+}
+
+/* Large Desktop (1025px+) */
+@media (min-width: 1025px) {
+  .section {
+    padding: 120px 8%; /* Original on large screens */
+  }
+
+  .grid {
+    gap: 35px; /* Original gap */
+  }
+
+  .card {
+    width: 220px; /* Original width */
+    height: 120px; /* Original height */
+    font-size: 1.1rem; /* Original font size */
+  }
+
+  .heading {
+    font-size: 2.8rem; /* Original font size */
+    letter-spacing: 1px; /* Original letter spacing */
+    margin-bottom: 70px; /* Original margin */
+  }
+
+  .note {
+    font-size: 1.1rem; /* Original font size */
+    margin-top: 60px; /* Original margin */
+  }
+}
+
+/* Landscape mobile (e.g., iPhone in landscape) */
+@media (max-width: 768px) and (orientation: landscape) {
+  .section {
+    padding: clamp(20px, 5vw, 60px) clamp(3%, 6%, 6%);
+  }
+
+  .grid {
+    gap: clamp(12px, 3vw, 20px);
+  }
+
+  .card {
+    width: clamp(180px, 40vw, 220px);
+    height: clamp(70px, 20vw, 90px);
+  }
+
+  .heading {
+    margin-bottom: clamp(15px, 4vw, 30px);
+  }
+
+  .note {
+    margin-top: clamp(15px, 3vw, 30px);
+  }
+}

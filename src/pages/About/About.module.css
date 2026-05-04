@@ -1,0 +1,298 @@
+/* About.module.css */
+.aboutPage {
+  font-family: "Poppins", sans-serif;
+  color: #333;
+  background: #fff;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 10%;
+  background: linear-gradient(to right, #fff, #fdf6e3);
+  flex-wrap: wrap;
+}
+
+.heroText {
+  flex: 1;
+  padding: 20px;
+}
+
+.heroText h1 {
+  font-size: 3rem;
+  color: #bfa14a;
+  margin-bottom: 20px;
+}
+
+.heroText p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.heroImage {
+  flex: 1;
+  text-align: center;
+}
+
+.heroImage img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+}
+.heroImage img:hover {
+  transform: scale(1.05);
+}
+
+/* Intro */
+.intro {
+  text-align: center;
+  padding: 60px 10%;
+}
+
+.intro h2 {
+  font-size: 2.5rem;
+  color: #bfa14a;
+  margin-bottom: 20px;
+}
+
+.intro p {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+/* Mission & Vision */
+.missionVision {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  padding: 60px 10%;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #fff;
+  border: 2px solid #bfa14a;
+  padding: 30px;
+  border-radius: 12px;
+  flex: 1;
+  min-width: 280px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  background: #bfa14a;
+  color: #fff;
+  transform: translateY(-8px);
+}
+
+/* Values */
+.values {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 60px 10%;
+  flex-wrap: wrap;
+}
+
+.valueCard {
+  background: #fdf6e3;
+  padding: 25px;
+  border-radius: 12px;
+  flex: 1;
+  min-width: 240px;
+  text-align: center;
+  transition: 0.3s;
+  border: 1px solid #eee;
+}
+
+.valueCard:hover {
+  border: 1px solid #bfa14a;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Stats Section */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  padding: 60px 10%;
+  background: #fff;
+  flex-wrap: wrap;
+}
+
+.statBox {
+  flex: 1;
+  min-width: 200px;
+  margin: 15px;
+}
+
+.statBox img {
+  width: 50px;
+  margin-bottom: 15px;
+}
+
+.statBox h4 {
+  font-size: 2rem;
+  color: #bfa14a;
+}
+
+/* Journey Gallery */
+.journey {
+  display: flex;
+  gap: 20px;
+  padding: 60px 10%;
+  flex-wrap: wrap;
+}
+
+.journeyImage {
+  flex: 1;
+  position: relative;
+  min-width: 300px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.journeyImage img {
+  width: 100%;
+  border-radius: 12px;
+  transition: transform 0.4s ease;
+}
+
+.journeyImage:hover img {
+  transform: scale(1.1);
+}
+
+.overlayText {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* Team Section */
+.team {
+  text-align: center;
+  padding: 60px 10%;
+}
+
+.teamGrid {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.teamCard {
+  background: #fff;
+  border: 2px solid #bfa14a;
+  padding: 20px;
+  border-radius: 12px;
+  width: 250px;
+  transition: 0.3s;
+}
+
+.teamCard:hover {
+  background: #bfa14a;
+  color: #fff;
+  transform: translateY(-8px);
+}
+
+/* Testimonials */
+.testimonials {
+  background: #fdf6e3;
+  padding: 60px 10%;
+  text-align: center;
+}
+
+.testimonialBox {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  transition: 0.3s;
+}
+
+.testimonialBox:hover {
+  border: 1px solid #bfa14a;
+}
+
+/* Carousel */
+.carousel {
+  padding: 60px 10%;
+  text-align: center;
+}
+
+/* CTA Section */
+.cta {
+  text-align: center;
+  padding: 80px 10%;
+  background: linear-gradient(to right, #fff, #fdf6e3);
+}
+
+.cta h2 {
+  font-size: 2.5rem;
+  color: #bfa14a;
+}
+
+.ctaButton {
+  margin-top: 20px;
+  padding: 14px 30px;
+  font-size: 1.1rem;
+  background: #bfa14a;
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.ctaButton:hover {
+  background: #a68e3b;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .missionVision,
+  .values,
+  .stats,
+  .journey {
+    flex-direction: column;
+  }
+
+  .statBox {
+    margin: 20px auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .heroText h1 {
+    font-size: 2rem;
+  }
+
+  .intro h2,
+  .cta h2 {
+    font-size: 2rem;
+  }
+
+  .card,
+  .valueCard,
+  .teamCard {
+    width: 100%;
+  }
+}

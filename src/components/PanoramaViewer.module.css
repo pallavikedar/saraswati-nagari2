@@ -1,0 +1,316 @@
+/* Panorama360Viewer.module.css - Professional 360° Panorama Viewer with Golden Heritage Palette */
+
+:global(:root) {
+  --gold-primary: #B8860B;
+  --taupe-accent: #8B7355;
+  --cream-bg: #FDF5E6;
+  --deep-charcoal: #2C1810;
+  --taupe-shadow: rgba(139, 115, 85, 0.08);
+  --gold-shadow: rgba(184, 134, 11, 0.18);
+  --gold-gradient: linear-gradient(135deg, var(--gold-primary), #DAA520);
+  --trust-border: 1px solid rgba(184, 134, 11, 0.1);
+}
+
+/* Container - Full viewport with elegant dark backdrop for immersion - Mobile optimized with overflow handling */
+.container {
+  position: relative;
+  width: 100vw;
+  height: 80vh;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); /* Subtle dark gradient for professional depth */
+  overflow: auto; /* Allow overflow on mobile for better interaction */
+  font-family: 'Playfair Display', serif;
+  touch-action: pan-x pan-y; /* Enable panning gestures on mobile for rotation */
+  -webkit-user-select: none; /* Prevent text selection on iOS */
+  user-select: none;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Canvas - Core viewing area with smooth cursor transitions - Enhanced for mobile touch rotation with overflow support */
+.canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+  transition: cursor 0.2s ease;
+  touch-action: pan-x pan-y pinch-zoom; /* Allow panning and zooming on mobile for smooth rotation */
+  -webkit-touch-callout: none; /* Disable callout on long press for iOS */
+  object-fit: cover; /* Ensure canvas fills properly */
+}
+
+.grab {
+  cursor: grab;
+}
+
+.dragging {
+  cursor: grabbing !important;
+}
+
+/* Loading State - Elegant centered loader - Responsive scaling */
+.loadingContainer {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, var(--cream-bg) 0%, #f5f0e8 100%); /* Site-integrated cream background */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--deep-charcoal);
+  font-family: 'Playfair Display', serif;
+  overflow: hidden; /* Hide overflow during loading */
+}
+
+.loadingSpinner {
+  width: clamp(40px, 8vw, 60px);
+  height: clamp(40px, 8vw, 60px);
+  border: 3px solid rgba(184, 134, 11, 0.1);
+  border-top: 3px solid var(--gold-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: clamp(0.8rem, 2vw, 1rem);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loadingText {
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--taupe-accent);
+  text-align: center;
+  padding: 0 clamp(1rem, 3vw, 1.5rem); /* Prevent edge clipping on small screens */
+}
+
+/* Controls Overlay - Subtle left-side guide with gold accents - Responsive positioning and sizing */
+.controlsOverlay {
+  position: absolute;
+  top: clamp(0.8rem, 2vw, 2rem);
+  left: clamp(0.8rem, 2vw, 2rem);
+  background: rgba(26, 26, 26, 0.85); /* Dark semi-transparent for contrast */
+  backdrop-filter: blur(12px);
+  border-radius: clamp(8px, 1.5vw, 12px);
+  padding: clamp(0.8rem, 2vw, 1.25rem);
+  color: #f8f8f8;
+  box-shadow: 0 8px 32px var(--taupe-shadow);
+  border: var(--trust-border);
+  min-width: clamp(120px, 25vw, 180px);
+  z-index: 10;
+  max-width: 90vw; /* Prevent overflow on very small screens */
+  overflow: visible; /* Allow content to overflow if needed */
+}
+
+.controlItem {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 1vw, 0.75rem);
+  margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
+  opacity: 0.9;
+}
+
+.controlItem:last-child {
+  margin-bottom: 0;
+}
+
+.controlLabel {
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  white-space: nowrap; /* Prevent wrapping on small screens */
+}
+
+.zoomDisplay {
+  font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+  color: var(--gold-primary);
+  font-weight: 500;
+  margin-top: clamp(0.3rem, 0.8vw, 0.5rem);
+  padding-top: clamp(0.3rem, 0.8vw, 0.5rem);
+  border-top: 1px solid rgba(184, 134, 11, 0.2);
+}
+
+/* Zoom Controls - Right-side elegant buttons with hover effects - Responsive and touch-optimized */
+.zoomControls {
+  position: absolute;
+  top: clamp(0.8rem, 2vw, 2rem);
+  right: clamp(0.8rem, 2vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.4rem, 1vw, 0.75rem);
+  z-index: 10;
+}
+
+.controlButton {
+  width: clamp(32px, 5vw, 48px);
+  height: clamp(32px, 5vw, 48px);
+  background: rgba(26, 26, 26, 0.85);
+  backdrop-filter: blur(12px);
+  border: var(--trust-border);
+  border-radius: clamp(6px, 1vw, 8px);
+  color: #f8f8f8;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px var(--taupe-shadow);
+  touch-action: manipulation; /* Optimize touch on mobile */
+}
+
+.controlButton:hover {
+  background: rgba(184, 134, 11, 0.15);
+  box-shadow: 0 6px 20px var(--gold-shadow);
+  transform: translateY(-1px);
+  border-color: var(--gold-primary);
+}
+
+.controlButton:active {
+  transform: translateY(0);
+}
+
+/* Info Badge - Bottom-centered status with gold highlight - Responsive and non-intrusive */
+.infoBadge {
+  position: absolute;
+  bottom: clamp(0.8rem, 2vw, 2rem);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(26, 26, 26, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: clamp(12px, 2vw, 20px);
+  padding: clamp(0.5rem, 1vw, 0.75rem) clamp(0.8rem, 2vw, 1.5rem);
+  color: #f8f8f8;
+  font-size: clamp(0.7rem, 1.8vw, 0.875rem);
+  font-weight: 400;
+  box-shadow: 0 4px 16px var(--taupe-shadow);
+  border: var(--trust-border);
+  white-space: nowrap;
+  z-index: 10;
+  max-width: 90vw; /* Prevent horizontal overflow */
+  overflow: visible; /* Allow badge to show fully */
+}
+
+.badgeHighlight {
+  color: var(--gold-primary);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* Tablet and larger - Full features with refined spacing */
+@media (min-width: 769px) {
+  .controlsOverlay {
+    min-width: clamp(140px, 20vw, 180px);
+    padding: clamp(1rem, 2.5vw, 1.25rem);
+  }
+
+  .zoomControls {
+    gap: clamp(0.5rem, 1.2vw, 0.75rem);
+  }
+
+  .controlButton {
+    width: clamp(40px, 5.5vw, 48px);
+    height: clamp(40px, 5.5vw, 48px);
+  }
+
+  .infoBadge {
+    padding: clamp(0.6rem, 1.2vw, 0.75rem) clamp(1rem, 2.5vw, 1.5rem);
+  }
+}
+
+/* Mobile - Simplified UI for immersion and touch optimization */
+@media (max-width: 768px) {
+  .controlsOverlay {
+    left: clamp(0.5rem, 1.2vw, 0.8rem);
+    top: clamp(0.5rem, 1.2vw, 0.8rem);
+    padding: clamp(0.6rem, 1.2vw, 0.8rem);
+    min-width: clamp(100px, 28vw, 120px);
+    font-size: clamp(0.7rem, 2.2vw, 0.75rem);
+  }
+
+  .zoomControls {
+    right: clamp(0.5rem, 1.2vw, 0.8rem);
+    top: clamp(0.5rem, 1.2vw, 0.8rem);
+    gap: clamp(0.3rem, 0.8vw, 0.4rem);
+  }
+
+  .controlButton {
+    width: clamp(28px, 4.5vw, 36px);
+    height: clamp(28px, 4.5vw, 36px);
+  }
+
+  .infoBadge {
+    bottom: clamp(0.5rem, 1.2vw, 0.8rem);
+    padding: clamp(0.4rem, 0.8vw, 0.5rem) clamp(0.6rem, 1.2vw, 0.8rem);
+    font-size: clamp(0.65rem, 1.5vw, 0.7rem);
+  }
+
+  .loadingText {
+    font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+    padding: 0 clamp(0.8rem, 2vw, 1rem);
+  }
+
+  .loadingSpinner {
+    width: clamp(30px, 6vw, 40px);
+    height: clamp(30px, 6vw, 40px);
+  }
+
+  .container {
+    touch-action: pan-x pan-y pinch-zoom; /* Allow basic touch gestures while enabling panorama drag */
+  }
+}
+
+/* Very small screens - Minimal UI for maximum canvas space */
+@media (max-width: 480px) {
+  .controlsOverlay {
+    display: none; /* Hide detailed controls on very small screens for full immersion */
+  }
+
+  .infoBadge {
+    display: none; /* Hide badge on very small screens to maximize canvas */
+  }
+
+  .zoomControls {
+    gap: clamp(0.2rem, 0.6vw, 0.3rem);
+  }
+
+  .controlButton {
+    width: clamp(24px, 4vw, 28px);
+    height: clamp(24px, 4vw, 28px);
+  }
+}
+
+/* Landscape mobile - Adjusted positioning for horizontal space */
+@media (max-width: 768px) and (orientation: landscape) {
+  .controlsOverlay {
+    top: clamp(0.4rem, 1vw, 0.6rem);
+    left: clamp(0.4rem, 1vw, 0.6rem);
+    padding: clamp(0.5rem, 1vw, 0.6rem);
+  }
+
+  .zoomControls {
+    top: clamp(0.4rem, 1vw, 0.6rem);
+    right: clamp(0.4rem, 1vw, 0.6rem);
+  }
+
+  .infoBadge {
+    bottom: clamp(0.4rem, 1vw, 0.6rem);
+    font-size: clamp(0.6rem, 1.2vw, 0.65rem);
+  }
+
+  .loadingSpinner {
+    width: clamp(28px, 5vw, 35px);
+    height: clamp(28px, 5vw, 35px);
+  }
+}
+
+/* High DPI/Retina - Sharper rendering */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .canvas {
+    image-rendering: -webkit-optimize-contrast; /* Sharper canvas rendering */
+  }
+
+  .controlsOverlay,
+  .zoomControls,
+  .infoBadge {
+    backdrop-filter: blur(16px); /* Stronger blur on high-res */
+  }
+}

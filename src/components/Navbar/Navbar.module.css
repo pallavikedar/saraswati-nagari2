@@ -1,0 +1,141 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  /* background: rgba(0, 0, 0, 0.35); semi-transparent */
+  backdrop-filter: blur(8px);
+  padding: clamp(0.8rem, 2vw, 1rem) clamp(1rem, 4vw, 2rem);
+  transition: background 0.3s ease;
+}
+
+.scrolled {
+  background: rgba(123, 123, 123, 0.433); /* background on scroll */
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: clamp(1000px, 95vw, 1300px);
+  margin: auto;
+}
+
+.logo img { 
+  width: clamp(150px, 20vw, 220px); 
+  height: auto; 
+  cursor: pointer; 
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.02);
+}
+
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  padding: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.menuButton:hover {
+  transform: rotate(90deg);
+}
+
+.navLinks {
+  display: flex;
+  gap: clamp(1rem, 2vw, 2rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLinks li a {
+  color: white;
+  font-weight: 600;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.navLinks li a:hover { 
+  color: #ff5f6d; 
+  background: rgba(255, 95, 109, 0.1);
+}
+
+/* Tablet and below: Hide desktop nav, show mobile menu */
+@media (max-width: 1024px) {
+  .menuButton { display: block; }
+  
+  .navLinks {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: clamp(1rem, 3vw, 1.5rem) 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .navLinks.show { 
+    display: flex; 
+  }
+  
+  .navLinks li a {
+    display: block;
+    padding: clamp(0.8rem, 2vw, 1rem);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .navLinks li a:hover {
+    background: rgba(255, 95, 109, 0.2);
+  }
+}
+
+/* Mobile-specific fine-tuning */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.8rem 1rem;
+  }
+
+  .container {
+    gap: 1rem;
+     justify-content: space-around;
+  }
+  
+
+  .logo img {
+    width: clamp(120px, 30vw, 150px);
+  }
+
+  .menuButton {
+    padding: 0.4rem;
+  }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .navbar {
+    padding: 0.6rem 1rem;
+  }
+
+  .navLinks {
+    top: 100%;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+}
+
+
+

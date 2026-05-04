@@ -1,0 +1,225 @@
+.qualitySection {
+  background-color: #fefef6;
+  padding: clamp(40px, 8vw, 100px) clamp(4%, 8%, 8%); /* Responsive padding */
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  color: #1e3a34;
+}
+
+.heading {
+  position: relative;
+  font-size: clamp(1.8rem, 5vw, 2.5rem); /* Responsive font size */
+  font-weight: 700;
+  background: linear-gradient(90deg, #013722, #1e3a34);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: clamp(0.8px, 1.5px, 1.5px); /* Responsive letter spacing */
+  display: inline-block;
+  padding-bottom: clamp(8px, 2vw, 12px);
+  margin-bottom: clamp(40px, 8vw, 80px);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+
+/* When visible on scroll */
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Golden underline that animates on scroll */
+.heading::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #c5a25f, #d4af37);
+  border-radius: 10px;
+  transform: translateX(-50%);
+  transition: width 1.2s ease 0.3s;
+}
+
+.visible::after {
+  width: 70%;
+}
+
+/* Elegant glowing highlight */
+.heading::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  width: 60%;
+  height: 6px;
+  background: radial-gradient(circle, rgba(197,162,95,0.6) 0%, transparent 80%);
+  transform: translateX(-50%);
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 1.2s ease 0.5s;
+}
+
+.visible::before {
+  opacity: 1;
+}
+
+/* Grid */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 90vw, 280px), 1fr)); /* Responsive minmax for better mobile fit */
+  gap: clamp(1.5rem, 4vw, 2rem); /* Responsive gap */
+}
+
+/* Card */
+.card {
+  background: #fff;
+  /* border-radius: 18px; */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  padding: clamp(20px, 6vw, 30px) clamp(12px, 4vw, 20px); /* Responsive padding */
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+/* Top Content - always visible */
+.topContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: clamp(12px, 3vw, 20px); /* Responsive margin */
+}
+
+.icon {
+  font-size: clamp(2rem, 7vw, 2.5rem); /* Responsive icon size */
+  color: #c5a25f; /* golden */
+  margin-bottom: 12px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .icon {
+  transform: scale(1.1);
+}
+
+.title {
+  font-size: clamp(1.1rem, 4vw, 1.3rem); /* Responsive title */
+  font-weight: 600;
+  color: #1e3a34;
+}
+
+/* Details below title - hidden initially */
+.details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+/* On hover - expand details */
+.card:hover .details {
+  max-height: 300px;
+}
+
+/* List items animation */
+.details ul {
+  list-style: disc inside;
+  padding: 0;
+  margin: 0;
+}
+
+.details li {
+  font-size: clamp(0.8rem, 3vw, 0.95rem); /* Responsive list text */
+  color: #ffffff;
+  background-color: #01441c; /* subtle golden background */
+  padding: clamp(4px, 1.5vw, 6px) clamp(8px, 2.5vw, 12px); /* Responsive padding */
+  border: 2px solid #c5a25f;
+  margin: clamp(4px, 1.5vw, 6px) 0;
+  /* border-radius: 8px; */
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.4s ease;
+}
+
+.card:hover .details li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover .details li:nth-child(1) { transition-delay: 0.1s; }
+.card:hover .details li:nth-child(2) { transition-delay: 0.2s; }
+.card:hover .details li:nth-child(3) { transition-delay: 0.3s; }
+.card:hover .details li:nth-child(4) { transition-delay: 0.4s; }
+.card:hover .details li:nth-child(5) { transition-delay: 0.5s; }
+
+/* Mobile-specific adjustments (below 768px) */
+@media (max-width: 768px) {
+  .qualitySection {
+    padding: clamp(20px, 6vw, 60px) 4%; /* Tighter padding on mobile */
+  }
+
+  .heading {
+    margin-bottom: clamp(20px, 5vw, 40px); /* Reduced margin on mobile */
+  }
+
+  .topContent {
+    flex-direction: column; /* Stack on small screens for better space usage */
+    gap: clamp(8px, 2vw, 12px);
+  }
+
+  .icon {
+    margin-bottom: 0; /* Remove bottom margin when stacked */
+  }
+
+  .cardGrid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 1.5rem;
+  }
+}
+
+/* Tablet adjustments (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+    gap: 1.8rem;
+  }
+
+  .card {
+    padding: 25px 18px;
+  }
+}
+
+/* Large Desktop (1025px+) */
+@media (min-width: 1025px) {
+  .qualitySection {
+    padding: 100px 8%; /* Original padding on large screens */
+  }
+
+  .cardGrid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Original on large screens */
+    gap: 2rem;
+  }
+}
+
+/* Landscape mobile (e.g., iPhone in landscape) */
+@media (max-width: 768px) and (orientation: landscape) {
+  .qualitySection {
+    padding: 20px 5%;
+  }
+
+  .heading {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+    margin-bottom: 30px;
+  }
+
+  .cardGrid {
+    gap: 1.2rem;
+  }
+
+  .card {
+    padding: 20px 15px;
+  }
+}
