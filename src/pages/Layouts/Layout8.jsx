@@ -336,7 +336,7 @@ const Layout8 = () => {
         >
           Shall We Unveil Your Chapter? Our Attendants Await.
         </motion.p>
-         <a href="https://wa.me/919823388866 "  >
+         <a href="https://wa.me/919494942894"  >
         <motion.button 
           className={styles.footerCta}
           initial={{ opacity: 0, y: 20 }}

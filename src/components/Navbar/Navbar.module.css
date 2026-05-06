@@ -55,7 +55,7 @@
   padding: 0;
 }
 
-.navLinks li a {
+.navLinks li a ,.navLinks li span {
   color: white;
   font-weight: 600;
   font-size: clamp(0.9rem, 2vw, 1rem);
@@ -65,7 +65,7 @@
   border-radius: 4px;
 }
 
-.navLinks li a:hover { 
+.navLinks li a:hover ,.navLinks li span:hover { 
   color: #ff5f6d; 
   background: rgba(255, 95, 109, 0.1);
 }

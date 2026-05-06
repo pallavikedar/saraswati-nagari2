@@ -5,8 +5,11 @@ import logo from "../../assets/logo.png";
 import styles from "./Navbar.module.css";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../../Context/LanguageContext";
+import { useLocation } from "react-router-dom";
+
 
 export const Translation = () => {
+
   const { lang, setLang } = useLanguage();
 
   return (
@@ -21,9 +24,36 @@ export const Translation = () => {
 
 
 const Navbar = () => {
+    const location = useLocation();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+
+
+const handleSectionClick = (sectionId) => {
+  closeMenu();
+
+  if (location.pathname === "/") {
+    // Same page → scroll directly
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  } else {
+    // Different page → navigate + scroll
+    navigate("/");
+
+    setTimeout(() => {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 150);
+  }
+};
+
+
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -53,9 +83,23 @@ const Navbar = () => {
         </button>
         
         <ul className={`${styles.navLinks} ${menuOpen ? styles.show : ""}`}>
-          <li><Link to="/" onClick={closeMenu}>Home</Link></li>
-          <li><a href="#about" onClick={closeMenu}>About Us</a></li>
-          <li><a href="#layout" onClick={closeMenu}>Projects</a></li>
+          <li>
+    <span onClick={() => handleSectionClick("home")}>
+      Home
+    </span>
+  </li>
+
+  <li>
+    <span onClick={() => handleSectionClick("about")}>
+      About Us
+    </span>
+  </li>
+
+  <li>
+    <span onClick={() => handleSectionClick("layout")}>
+      Projects
+    </span>
+  </li>
           <li><Link to="/gallery" onClick={closeMenu}>Gallery</Link></li>
           <li><Link to="/contact" onClick={closeMenu}>Contact Us</Link></li>
         </ul>

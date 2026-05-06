@@ -380,7 +380,7 @@ const image = "https://fra.cloud.appwrite.io/v1/storage/buckets/69410e4f002f12a6
         >
           Shall We Unveil Your Chapter? Our Attendants Await.
         </motion.p>
-         <a href="https://wa.me/919823388866 "  >
+         <a href="https://wa.me/919494942894"  >
         <motion.button 
           className={styles.footerCta}
           initial={{ opacity: 0, y: 20 }}

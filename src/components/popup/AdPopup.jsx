@@ -54,6 +54,9 @@ const AdPopup = () => {
                   <a href="tel:+917888028866" className={styles.phone}>
                     📞 +91 78 88 02 88 66
                   </a>
+                    <a href="tel:+919823388866" className={styles.phone}>
+                    📞 +91 982 33 888 66
+                  </a>
                 </div>
 
                 <div className={styles.btnRow}>

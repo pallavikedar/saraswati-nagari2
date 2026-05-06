@@ -242,7 +242,7 @@ const Layout10 = () => {
         <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
           Shall We Unveil Your Chapter? Our Attendants Await.
         </motion.p>
-        <a href="https://wa.me/919823388866">
+        <a href="https://wa.me/919494942894">
           <motion.button className={styles.footerCta}
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.4 }}
             whileHover={{ scale: 1.05, boxShadow: "0 8px 25px rgba(184, 134, 11, 0.3)", transition: { duration: 0.3 } }}
